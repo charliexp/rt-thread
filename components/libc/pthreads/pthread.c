@@ -39,7 +39,6 @@ int pthread_system_init(void)
 
     return 0;
 }
-INIT_COMPONENT_EXPORT(pthread_system_init);
 
 static void _pthread_cleanup(rt_thread_t tid)
 {
