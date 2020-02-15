@@ -1,0 +1,10 @@
+*.o
+*.asm
+*.bin
+*.map
+*.elf
+*.pyc
+*.config.old
+.sconsign.dblite
+cconfig.h
+packages/

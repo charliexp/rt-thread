@@ -15,9 +15,14 @@
 #define RT_USING_HOOK
 #define RT_USING_IDLE_HOOK
 #define RT_IDLE_HOOK_LIST_SIZE 4
-#define IDLE_THREAD_STACK_SIZE 1024
+#define IDLE_THREAD_STACK_SIZE 256
+#define RT_USING_TIMER_SOFT
+#define RT_TIMER_THREAD_PRIO 4
+#define RT_TIMER_THREAD_STACK_SIZE 512
 #define RT_DEBUG
 #define RT_DEBUG_COLOR
+#define RT_DEBUG_INIT_CONFIG
+#define RT_DEBUG_INIT 1
 
 /* Inter-Thread communication */
 
@@ -31,7 +36,7 @@
 
 #define RT_USING_MEMPOOL
 #define RT_USING_MEMHEAP
-#define RT_USING_MEMHEAP_AS_HEAP
+#define RT_USING_SLAB
 #define RT_USING_HEAP
 
 /* Kernel Device Object */
@@ -39,12 +44,10 @@
 #define RT_USING_DEVICE
 #define RT_USING_CONSOLE
 #define RT_CONSOLEBUF_SIZE 128
-#define RT_CONSOLE_DEVICE_NAME "uart1"
+#define RT_CONSOLE_DEVICE_NAME "uart0"
 #define RT_VER_NUM 0x40003
 #define ARCH_ARM
-#define RT_USING_CPU_FFS
-#define ARCH_ARM_CORTEX_M
-#define ARCH_ARM_CORTEX_M4
+#define ARCH_ARM_ARM9
 
 /* RT-Thread Components */
 
@@ -55,6 +58,7 @@
 
 /* C++ features */
 
+#define RT_USING_CPLUSPLUS
 
 /* Command shell */
 
@@ -69,19 +73,44 @@
 #define FINSH_CMD_SIZE 80
 #define FINSH_USING_MSH
 #define FINSH_USING_MSH_DEFAULT
+#define FINSH_USING_MSH_ONLY
 #define FINSH_ARG_MAX 10
 
 /* Device virtual file system */
 
+#define RT_USING_DFS
+#define DFS_USING_WORKDIR
+#define DFS_FILESYSTEMS_MAX 2
+#define DFS_FILESYSTEM_TYPES_MAX 2
+#define DFS_FD_MAX 16
+#define RT_USING_DFS_DEVFS
 
 /* Device Drivers */
 
 #define RT_USING_DEVICE_IPC
 #define RT_PIPE_BUFSZ 512
+#define RT_USING_SYSTEM_WORKQUEUE
+#define RT_SYSTEM_WORKQUEUE_STACKSIZE 2048
+#define RT_SYSTEM_WORKQUEUE_PRIORITY 23
 #define RT_USING_SERIAL
 #define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
+#define RT_USING_I2C
 #define RT_USING_PIN
+#define RT_USING_MTD_NOR
+#define RT_USING_SDIO
+#define RT_SDIO_STACK_SIZE 512
+#define RT_SDIO_THREAD_PRIORITY 15
+#define RT_MMCSD_STACK_SIZE 1024
+#define RT_MMCSD_THREAD_PREORITY 22
+#define RT_MMCSD_MAX_PARTITION 16
+#define RT_USING_SPI
+#define RT_USING_SFUD
+#define RT_SFUD_USING_SFDP
+#define RT_SFUD_USING_FLASH_INFO_TABLE
+#define RT_SFUD_SPI_MAX_HZ 50000000
+#define RT_USING_WDT
+#define RT_USING_TOUCH
 
 /* Using USB */
 
@@ -91,14 +120,20 @@
 #define RT_USING_LIBC
 #define RT_USING_PTHREADS
 #define PTHREAD_NUM_MAX 8
+#define RT_USING_POSIX
 
 /* Network */
 
 /* Socket abstraction layer */
 
+#define RT_USING_SAL
+#define SAL_USING_POSIX
 
 /* Network interface device */
 
+#define RT_USING_NETDEV
+#define NETDEV_IPV4 1
+#define NETDEV_IPV6 0
 
 /* light weight TCP/IP stack */
 
@@ -142,15 +177,15 @@
 
 /* system packages */
 
-#define PKG_USING_LITTLEVGL2RTT
-#define PKG_USING_LITTLEVGL2RTT_V001
+#define PKG_USING_LITTLEVGL2RTT_V6
+#define PKG_USING_LITTLEVGL2RTT_LATEST_VERSION
 
 /* LittlevGL2RTT Options */
 
 #define LV_MEM_DYNAMIC
 #define LV_MEM_CUSTOM 1
-#define LV_COLOR_DEPTH_16
-#define LV_COLOR_DEPTH 16
+#define LV_COLOR_DEPTH_32
+#define LV_COLOR_DEPTH 32
 #define LV_HOR_RES 480
 #define LV_VER_RES 272
 #define LV_DPI 50
@@ -167,26 +202,10 @@
 
 /* rtpkgs online packages */
 
-#define PKG_USING_CSTRING
-#define PKG_USING_CSTRING_LATEST_VERSION
-#define SOC_FAMILY_STM32
-#define SOC_SERIES_STM32F4
-
-/* Hardware Drivers Config */
-
-#define SOC_STM32F429IG
-
-/* Onboard Peripheral Drivers */
-
-#define BSP_USING_USB_TO_USART
-
-/* On-chip Peripheral Drivers */
-
-#define BSP_USING_GPIO
-#define BSP_USING_UART
-#define BSP_USING_UART1
-
-/* Board extended module Drivers */
-
+#define SOC_TINA
+#define TINA_USING_UART0
+#define TINA_USING_SPI0
+#define TINA_USING_SPI_FLASH
+#define TINA_USING_LCD
 
 #endif
